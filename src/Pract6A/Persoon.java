@@ -21,6 +21,7 @@ public class Persoon {
     public boolean koop(Game g) {
         if (g.huidigeWaarde() < budget && !games.contains(g)) {
             budget -= g.huidigeWaarde();
+
             games.add(g);
             return true;
         }
@@ -39,7 +40,7 @@ public class Persoon {
     }
 
     public String toString() {
-        String s = naam + " heeft een budget van €" + budget + " en bezit de volgende games:\n";
+        String s = naam + " heeft een budget van €" + String.format("%.2f", budget) + " en bezit de volgende games:\n";
 
         for(Game g : games) {
             s += g.toString() + "\n";
