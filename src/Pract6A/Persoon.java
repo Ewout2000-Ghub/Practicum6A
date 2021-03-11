@@ -29,7 +29,7 @@ public class Persoon {
     }
 
     public boolean verkoop(Game g, Persoon koper) {
-        if (g.huidigeWaarde() < koper.getBudget() && games.contains(g)) {
+        if (g.huidigeWaarde() < koper.getBudget() && games.contains(g) && !koper.games.contains(g)) {
             games.remove(g);
             koper.games.add(g);
             budget += g.huidigeWaarde();
@@ -40,10 +40,10 @@ public class Persoon {
     }
 
     public String toString() {
-        String s = naam + " heeft een budget van €" + String.format("%.2f", budget) + " en bezit de volgende games:\n";
+        String s = naam + " heeft een budget van €" + String.format("%.2f", budget) + " en bezit de volgende games:";
 
         for(Game g : games) {
-            s += g.toString() + "\n";
+            s += ("\n" + g.toString());
         }
 
         return s;
